@@ -19,6 +19,7 @@ public class EnemyAggroCheck : MonoBehaviour
         if (other.gameObject == PlayerTarget)
         {
             _enemy.SetAggroStatus(true);
+            Debug.Log("Player is within aggro range");
         }
     }
 
@@ -27,6 +28,7 @@ public class EnemyAggroCheck : MonoBehaviour
         if (other.gameObject == PlayerTarget)
         {
             _enemy.SetAggroStatus(false);
+            Debug.Log("Player is not within aggro range");
         }
     }
 }

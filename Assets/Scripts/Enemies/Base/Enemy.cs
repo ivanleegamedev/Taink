@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IDamageable, IMoveable, ITriggerCheckable
 {
@@ -8,6 +9,7 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable, ITriggerCheckable
     [field: SerializeField] public float MaxHealth { get; set; } = 100.0f;
     public float CurrentHealth { get; set; }
     public Rigidbody rb { get; set; }
+    public NavMeshAgent agent { get; set; }
     public bool IsAggroed { get; set; }
     public bool IsWithinAttackDistance { get; set; }
     #endregion
@@ -54,6 +56,7 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable, ITriggerCheckable
         CurrentHealth = MaxHealth;
 
         rb = GetComponent<Rigidbody>();
+        agent = GetComponent<NavMeshAgent>();
 
         EnemyIdleBaseInstance.Initialize(gameObject, this);
         EnemyChaseBaseInstance.Initialize(gameObject, this);
