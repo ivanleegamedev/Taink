@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamageable, IMoveable
+public class Enemy : MonoBehaviour, IDamageable, IMoveable, ITriggerCheckable
 {
     #region Variables
     [field: SerializeField] public float MaxHealth { get; set; } = 100.0f;
     public float CurrentHealth { get; set; }
     public Rigidbody rb { get; set; }
+    public bool IsAggroed { get; set; }
+    public bool IsWithinAttackDistance { get; set; }
     #endregion
 
 
@@ -17,14 +19,24 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable
     public EnemyIdleState IdleState { get; set; }
     public EnemyChaseState ChaseState { get; set; }
     public EnemyAttackState AttackState { get; set; }
+    #endregion
 
+
+
+    #region ScriptableObject Variables
+    [SerializeField] private SO_Base_EnemyIdle EnemyIdleBase;
+    [SerializeField] private SO_Base_EnemyChase EnemyChaseBase;
+    [SerializeField] private SO_Base_EnemyAttack EnemyAttackBase;
+
+    public SO_Base_EnemyIdle EnemyIdleBaseInstance { get; set; }
+    public SO_Base_EnemyChase EnemyChaseBaseInstance { get; set; }
+    public SO_Base_EnemyAttack EnemyAttackBaseInstance { get; set; }
     #endregion
 
 
 
     #region Idle Variables
-    public float RandomMovementRange = 5.0f;
-    public float RandomMovementSpeed = 1.0f;
+    public Rigidbody BulletPrefab;
     #endregion
 
 
@@ -32,6 +44,10 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable
     #region Main Methods
     private void Awake()
     {
+        EnemyIdleBaseInstance = Instantiate(EnemyIdleBase);
+        EnemyChaseBaseInstance = Instantiate(EnemyChaseBase);
+        EnemyAttackBaseInstance = Instantiate(EnemyAttackBase);
+
         StateMachine = new EnemyStateMachine();
 
         IdleState = new EnemyIdleState(this, StateMachine);
@@ -44,6 +60,10 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable
         CurrentHealth = MaxHealth;
 
         rb = GetComponent<Rigidbody>();
+
+        EnemyIdleBaseInstance.Initialize(gameObject, this);
+        EnemyChaseBaseInstance.Initialize(gameObject, this);
+        EnemyAttackBaseInstance.Initialize(gameObject, this);
 
         StateMachine.Initialize(IdleState);
     }
@@ -62,7 +82,7 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable
 
 
 
-    #region Custom Methods
+    #region Health and Damage Methods
     public void Damage(float damageAmount)
     {
         CurrentHealth -= damageAmount;
@@ -77,10 +97,28 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable
     {
         Destroy(gameObject);
     }
+    #endregion
 
+
+
+    #region Movement Functions
     public void MoveEnemy(Vector2 velocity)
     {
         rb.velocity = velocity;
+    }
+    #endregion
+
+
+
+    #region Distance and Aggro Methods
+    public void SetAggroStatus(bool isAggroed)
+    {
+        IsAggroed = isAggroed;
+    }
+
+    public void SetAttackDistanceStatus(bool isWithinAttackDistance)
+    {
+        IsWithinAttackDistance = isWithinAttackDistance;
     }
     #endregion
 

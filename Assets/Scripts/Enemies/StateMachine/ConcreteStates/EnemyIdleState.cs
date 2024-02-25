@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class EnemyIdleState : EnemyState
 {
-    private Vector3 _targetPos;
-    private Vector3 _direction;
-
     public EnemyIdleState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
     {
     }
@@ -19,8 +16,6 @@ public class EnemyIdleState : EnemyState
     public override void EnterState()
     {
         base.EnterState();
-
-        _targetPos = GetRandomPointInCircle();
     }
 
     public override void ExitState()
@@ -31,24 +26,10 @@ public class EnemyIdleState : EnemyState
     public override void FrameUpdate()
     {
         base.FrameUpdate();
-
-        _direction = (_targetPos - enemy.transform.position).normalized;
-
-        enemy.MoveEnemy(_direction * enemy.RandomMovementSpeed);
-
-        if ((enemy.transform.position - _targetPos).sqrMagnitude < 0.1f)
-        {
-            _targetPos = GetRandomPointInCircle();
-        }
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-    }
-
-    private Vector3 GetRandomPointInCircle()
-    {
-        return enemy.transform.position + (Vector3)UnityEngine.Random.insideUnitCircle * enemy.RandomMovementRange;
     }
 }
