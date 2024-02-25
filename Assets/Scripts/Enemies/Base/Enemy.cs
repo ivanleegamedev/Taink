@@ -35,12 +35,6 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable, ITriggerCheckable
 
 
 
-    #region Idle Variables
-    public Rigidbody BulletPrefab;
-    #endregion
-
-
-
     #region Main Methods
     private void Awake()
     {
@@ -71,7 +65,6 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable, ITriggerCheckable
     private void Update()
     {
         StateMachine.CurrentEnemyState.FrameUpdate();
-
     }
 
     private void FixedUpdate()
