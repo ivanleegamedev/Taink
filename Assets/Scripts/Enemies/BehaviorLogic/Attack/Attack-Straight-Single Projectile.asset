@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60b9fc5e0e378a64aa7b88ade24bcc40, type: 3}
   m_Name: Attack-Straight-Single Projectile
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 0}
+  BulletPrefab: {fileID: 2991121335593971782, guid: 08338119ba0c943449889713a3e36f21,
+    type: 3}
   _timeBetweenShots: 2
   _timeUntilExit: 3
   _distanceToCountExit: 3
