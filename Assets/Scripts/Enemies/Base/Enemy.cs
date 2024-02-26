@@ -40,6 +40,9 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable, ITriggerCheckable
     #region Main Methods
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
+        agent = GetComponent<NavMeshAgent>();
+
         EnemyIdleBaseInstance = Instantiate(EnemyIdleBase);
         EnemyChaseBaseInstance = Instantiate(EnemyChaseBase);
         EnemyAttackBaseInstance = Instantiate(EnemyAttackBase);
@@ -54,9 +57,6 @@ public class Enemy : MonoBehaviour, IDamageable, IMoveable, ITriggerCheckable
     private void Start()
     {
         CurrentHealth = MaxHealth;
-
-        rb = GetComponent<Rigidbody>();
-        agent = GetComponent<NavMeshAgent>();
 
         EnemyIdleBaseInstance.Initialize(gameObject, this);
         EnemyChaseBaseInstance.Initialize(gameObject, this);

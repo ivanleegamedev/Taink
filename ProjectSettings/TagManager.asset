@@ -12,13 +12,13 @@ TagManager:
   - Water
   - UI
   - PostProcessing
+  - WhatIsGround
+  - WhatIsWall
   - 
+  - WhatIsEnemy
+  - WhatIsPlayer
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - WhatIsBullet
   - 
   - 
   - 
