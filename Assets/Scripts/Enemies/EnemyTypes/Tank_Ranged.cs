@@ -7,7 +7,9 @@ public class Tank_Ranged : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform player;
-    [SerializeField] private LayerMask whatIsGround, whatIsPlayer;
+    [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private LayerMask whatIsWall;
+    [SerializeField] private LayerMask whatIsPlayer;
 
     [SerializeField] private int health;
 
@@ -20,6 +22,7 @@ public class Tank_Ranged : MonoBehaviour
     [SerializeField] private float timeBetweenAttacks;
     [SerializeField] private bool alreadyAttacked;
     [SerializeField] private GameObject projectile;
+    [SerializeField] private Transform firePoint;
 
     // States
     [SerializeField] private float sightRange;
@@ -34,10 +37,8 @@ public class Tank_Ranged : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        // Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -54,7 +55,6 @@ public class Tank_Ranged : MonoBehaviour
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
-        // Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
         {
             walkPointSet = false;
@@ -63,7 +63,6 @@ public class Tank_Ranged : MonoBehaviour
 
     private void SearchWalkPoint()
     {
-        // Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
@@ -82,17 +81,15 @@ public class Tank_Ranged : MonoBehaviour
 
     private void AttackPlayer()
     {
-        // Make sure enemy doesn't move
         agent.SetDestination(transform.position);
 
         transform.LookAt(player);
 
         if (!alreadyAttacked)
         {
-            // Attack code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            GameObject projectileInstance = Instantiate(projectile, firePoint.position + transform.forward * 1, transform.rotation);
+            Rigidbody rb = projectileInstance.GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
