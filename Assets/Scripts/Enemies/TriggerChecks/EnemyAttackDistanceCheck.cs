@@ -19,7 +19,6 @@ public class EnemyAttackDistanceCheck : MonoBehaviour
         if (other.gameObject == PlayerTarget)
         {
             _enemy.SetAttackDistanceStatus(true);
-            Debug.Log("Player is within attack distance");
         }
     }
 
@@ -28,7 +27,6 @@ public class EnemyAttackDistanceCheck : MonoBehaviour
         if (other.gameObject == PlayerTarget)
         {
             _enemy.SetAttackDistanceStatus(false);
-            Debug.Log("Player is not within attack distance");
         }
     }
 }

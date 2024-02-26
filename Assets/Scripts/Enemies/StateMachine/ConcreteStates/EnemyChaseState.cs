@@ -21,6 +21,8 @@ public class EnemyChaseState : EnemyState
         base.EnterState();
 
         enemy.EnemyChaseBaseInstance.DoEnterLogic();
+
+        Debug.Log("Chase Enter State");
     }
 
     public override void ExitState()
@@ -28,6 +30,8 @@ public class EnemyChaseState : EnemyState
         base.ExitState();
 
         enemy.EnemyChaseBaseInstance.DoExitLogic();
+
+        Debug.Log("Chase Exit State");
     }
 
     public override void FrameUpdate()
