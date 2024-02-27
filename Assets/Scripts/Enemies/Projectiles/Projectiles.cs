@@ -23,7 +23,7 @@ public class Projectiles : MonoBehaviour
                 controller.TakeDamage(damage);
             }
             Destroy(gameObject);
-            return; // Exit the method after handling
+            return;
         }
         if (collision.gameObject.tag == "Enemy")
         {
@@ -32,7 +32,7 @@ public class Projectiles : MonoBehaviour
             {
                 ranged.TakeDamage(damage);
                 Destroy(gameObject);
-                return; // Exit the method after handling
+                return;
             }
 
             var patrolBomb = collision.gameObject.GetComponent<Tank_Patrol_Bomb>();
@@ -40,11 +40,18 @@ public class Projectiles : MonoBehaviour
             {
                 patrolBomb.TakeDamage(damage);
                 Destroy(gameObject);
-                return; // Exit the method after handling
+                return;
+            }
+
+            var turret = collision.gameObject.GetComponent<Turret_Basic>();
+            if (turret != null)
+            {
+                turret.TakeDamage(damage);
+                Destroy(gameObject);
+                return;
             }
         }
 
-        // Consider if you want to destroy the projectile in all cases or only specific ones
         Destroy(gameObject);
     }
 

@@ -12,7 +12,7 @@ public class Tank_Ranged : MonoBehaviour
     [SerializeField] private LayerMask whatIsPlayer;
 
     [SerializeField] private int maxHealth;
-    [SerializeField] private int currentHealth;
+    private int currentHealth;
 
     // Patrolling
     [SerializeField] private Vector3 walkPoint;

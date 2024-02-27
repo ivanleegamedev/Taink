@@ -38,14 +38,11 @@ public class Tank_Patrol_Bomb : MonoBehaviour
 
     private void Update()
     {
-        // Check for sight using raycast
         RaycastHit hit;
         playerInSightRange = false;
 
-        // Perform raycast forward from the enemy's position
         if (Physics.Raycast(transform.position, transform.forward, out hit, sightRange, whatIsGround | whatIsWall | whatIsPlayer))
         {
-            // Check if the player is the object hit
             if (hit.collider.gameObject.CompareTag("Player"))
             {
                 playerInSightRange = true;
