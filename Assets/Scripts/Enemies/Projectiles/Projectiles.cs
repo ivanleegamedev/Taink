@@ -17,14 +17,35 @@ public class Projectiles : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Tank_Controller>().TakeDamage(damage);
+            var controller = collision.gameObject.GetComponent<Tank_Controller>();
+            if (controller != null)
+            {
+                controller.TakeDamage(damage);
+            }
             Destroy(gameObject);
+            return; // Exit the method after handling
         }
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<Tank_Ranged>().TakeDamage(damage);
-            Destroy(gameObject);
+            var ranged = collision.gameObject.GetComponent<Tank_Ranged>();
+            if (ranged != null)
+            {
+                ranged.TakeDamage(damage);
+                Destroy(gameObject);
+                return; // Exit the method after handling
+            }
+
+            var patrolBomb = collision.gameObject.GetComponent<Tank_Patrol_Bomb>();
+            if (patrolBomb != null)
+            {
+                patrolBomb.TakeDamage(damage);
+                Destroy(gameObject);
+                return; // Exit the method after handling
+            }
         }
+
+        // Consider if you want to destroy the projectile in all cases or only specific ones
         Destroy(gameObject);
     }
+
 }

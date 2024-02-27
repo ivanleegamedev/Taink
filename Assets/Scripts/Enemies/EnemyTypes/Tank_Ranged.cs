@@ -12,7 +12,7 @@ public class Tank_Ranged : MonoBehaviour
     [SerializeField] private LayerMask whatIsPlayer;
 
     [SerializeField] private int maxHealth;
-    private int currentHealth;
+    [SerializeField] private int currentHealth;
 
     // Patrolling
     [SerializeField] private Vector3 walkPoint;
@@ -108,7 +108,7 @@ public class Tank_Ranged : MonoBehaviour
     {
         currentHealth -= damage;
 
-        if (currentHealth <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
+        if (currentHealth <= 0) Invoke(nameof(DestroyEnemy), 0.0f);
     }
 
     private void DestroyEnemy()

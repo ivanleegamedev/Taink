@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 35199222}
   m_Layer: 10
   m_Name: VFX
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 111737913}
   m_Layer: 10
   m_Name: Enemy_Tank_Ranged
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -590,8 +590,8 @@ Transform:
   m_GameObject: {fileID: 111737909}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -63, y: 1.5, z: 48.6}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: -63, y: 2, z: 48.6}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 35199222}
@@ -621,7 +621,8 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 2048
-  health: 100
+  maxHealth: 50
+  currentHealth: 0
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
   walkPointRange: 100
@@ -629,7 +630,7 @@ MonoBehaviour:
   alreadyAttacked: 0
   projectile: {fileID: 9094009511398482965, guid: ebc8ef3e1eaa76c44aacba4e5ec67bf4,
     type: 3}
-  firePoint: {fileID: 7577388539610160150}
+  firePoint: {fileID: 1931573772}
   shootVelocity: 50
   sightRange: 25
   attackRange: 20
@@ -867,7 +868,7 @@ GameObject:
   - component: {fileID: 280885804}
   m_Layer: 10
   m_Name: Main_Collider
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -922,7 +923,7 @@ GameObject:
   - component: {fileID: 298572036}
   m_Layer: 10
   m_Name: Enemy_Tank_Patrol_Bomb
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -936,8 +937,8 @@ Transform:
   m_GameObject: {fileID: 298572029}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -61.9, y: 1.5, z: -41.1}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: -61.9, y: 2, z: -41.1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1282049367}
@@ -1016,7 +1017,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 2048
-  health: 100
+  maxHealth: 10
   chargeSpeed: 30
   patrolSpeed: 10
   patrolAccelSpeed: 4
@@ -4472,7 +4473,7 @@ GameObject:
   - component: {fileID: 836678820}
   m_Layer: 10
   m_Name: Main_Collider
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5501,7 +5502,7 @@ GameObject:
   - component: {fileID: 1080036222}
   m_Layer: 10
   m_Name: Colliders
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7512,7 +7513,7 @@ GameObject:
   - component: {fileID: 1282049367}
   m_Layer: 10
   m_Name: VFX
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9755,6 +9756,37 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1716086040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1716086041}
+  m_Layer: 11
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1716086041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716086040}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 17.5, z: 225}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4509682199360149217}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1731100644
 GameObject:
   m_ObjectHideFlags: 0
@@ -11252,6 +11284,37 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &1931573771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1931573772}
+  m_Layer: 10
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1931573772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931573771}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7577388539610160150}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1966284694
 GameObject:
   m_ObjectHideFlags: 0
@@ -11946,7 +12009,7 @@ GameObject:
   - component: {fileID: 2128785312}
   m_Layer: 10
   m_Name: Colliders
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12179,7 +12242,7 @@ GameObject:
   - component: {fileID: 8574931025652564390}
   m_Layer: 10
   m_Name: TankFree_Wheel_b_left
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12579,7 +12642,7 @@ GameObject:
   - component: {fileID: 924622666855781773}
   m_Layer: 10
   m_Name: TankFree_Wheel_b_right
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12812,7 +12875,7 @@ GameObject:
   - component: {fileID: 4734888613667937221}
   m_Layer: 10
   m_Name: TankFree_Tower
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13030,7 +13093,7 @@ GameObject:
   - component: {fileID: 2676217095912828770}
   m_Layer: 10
   m_Name: TankFree_Canon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13230,7 +13293,7 @@ GameObject:
   - component: {fileID: 6932180375433044418}
   m_Layer: 10
   m_Name: TankFree_Wheel_f_left
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13290,7 +13353,7 @@ GameObject:
   - component: {fileID: 6648665769497267404}
   m_Layer: 10
   m_Name: TankFree_Blue
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13461,7 +13524,7 @@ GameObject:
   - component: {fileID: 8524979845869199160}
   m_Layer: 10
   m_Name: TankFree_Wheel_f_right
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13597,7 +13660,8 @@ Transform:
   m_LocalPosition: {x: 1.2641166, y: 115.32021, z: 260.23593}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1716086041}
   m_Father: {fileID: 4508323405204157485}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4533206634677426452
@@ -13896,7 +13960,7 @@ Transform:
   m_GameObject: {fileID: 4804567551085441802}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -27.8, y: 0, z: 34.4}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13921,9 +13985,10 @@ MonoBehaviour:
   maxHealth: 100
   turretTransform: {fileID: 4508323405204157485}
   turretLagSpeed: 8
-  bulletPrefab: {fileID: 7090710131271465290, guid: 6f4d29cfd8b2b4744bcabc5437eeb536,
-    type: 3}
-  bulletSpawnPoint: {fileID: 4509682199360149217}
+  bulletPrefab: {fileID: 0}
+  bulletSpawnPoint: {fileID: 1716086041}
+  fireRate: 1
+  bulletSpeed: 1500
   reticleTransform: {fileID: 1372547880761110605}
 --- !u!114 &5325102042155362738
 MonoBehaviour:
@@ -14120,7 +14185,7 @@ GameObject:
   - component: {fileID: 6607123938217272531}
   m_Layer: 10
   m_Name: TankFree_Wheel_b_right
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14520,7 +14585,7 @@ GameObject:
   - component: {fileID: 2334435845200834808}
   m_Layer: 10
   m_Name: TankFree_Wheel_b_left
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14595,7 +14660,7 @@ GameObject:
   - component: {fileID: 801954193680252306}
   m_Layer: 10
   m_Name: TankFree_Yel
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14636,7 +14701,7 @@ GameObject:
   - component: {fileID: 3986211301906174108}
   m_Layer: 10
   m_Name: TankFree_Wheel_f_left
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14762,7 +14827,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.283638, z: 0.7371832}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1931573772}
   m_Father: {fileID: 5559575184735342000}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7723544352248629205
@@ -14913,7 +14979,7 @@ GameObject:
   - component: {fileID: 2390007726076391014}
   m_Layer: 10
   m_Name: TankFree_Wheel_f_right
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15148,7 +15214,7 @@ GameObject:
   - component: {fileID: 1643927414770051739}
   m_Layer: 10
   m_Name: TankFree_Tower
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15410,7 +15476,7 @@ GameObject:
   - component: {fileID: 8234275674931273276}
   m_Layer: 10
   m_Name: TankFree_Canon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

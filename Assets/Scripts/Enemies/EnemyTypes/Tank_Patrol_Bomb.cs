@@ -12,7 +12,9 @@ public class Tank_Patrol_Bomb : MonoBehaviour
     [SerializeField] private LayerMask whatIsWall;
     [SerializeField] private LayerMask whatIsPlayer;
 
-    [SerializeField] private int health;
+    [SerializeField] private int maxHealth;
+    private int currentHealth;
+
     [SerializeField] private float chargeSpeed;
     [SerializeField] private float patrolSpeed;
     [SerializeField] private float patrolAccelSpeed;
@@ -29,6 +31,7 @@ public class Tank_Patrol_Bomb : MonoBehaviour
 
     private void Awake()
     {
+        currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
@@ -111,11 +114,11 @@ public class Tank_Patrol_Bomb : MonoBehaviour
         DestroyEnemy();
     }
 
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
-        health -= damage;
+        currentHealth -= damage;
 
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
+        if (currentHealth <= 0) Invoke(nameof(DestroyEnemy), 0.0f);
     }
 
     private void DestroyEnemy()
