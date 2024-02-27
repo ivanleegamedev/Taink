@@ -13985,7 +13985,8 @@ MonoBehaviour:
   maxHealth: 100
   turretTransform: {fileID: 4508323405204157485}
   turretLagSpeed: 8
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 6299071353543684385, guid: 7c10c31acbca29f459d7eaab559ebf9a,
+    type: 3}
   bulletSpawnPoint: {fileID: 1716086041}
   fireRate: 1
   bulletSpeed: 1500
