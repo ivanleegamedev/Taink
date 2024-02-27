@@ -11,7 +11,8 @@ public class Tank_Ranged : MonoBehaviour
     [SerializeField] private LayerMask whatIsWall;
     [SerializeField] private LayerMask whatIsPlayer;
 
-    [SerializeField] private int health;
+    [SerializeField] private int maxHealth;
+    private int currentHealth;
 
     // Patrolling
     [SerializeField] private Vector3 walkPoint;
@@ -23,6 +24,7 @@ public class Tank_Ranged : MonoBehaviour
     [SerializeField] private bool alreadyAttacked;
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private float shootVelocity;
 
     // States
     [SerializeField] private float sightRange;
@@ -33,6 +35,7 @@ public class Tank_Ranged : MonoBehaviour
 
     private void Awake()
     {
+        currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
@@ -89,7 +92,7 @@ public class Tank_Ranged : MonoBehaviour
         {
             GameObject projectileInstance = Instantiate(projectile, firePoint.position + transform.forward * 1, transform.rotation);
             Rigidbody rb = projectileInstance.GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            rb.AddForce(transform.forward * shootVelocity, ForceMode.Impulse);
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -101,11 +104,11 @@ public class Tank_Ranged : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
-        health -= damage;
+        currentHealth -= damage;
 
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
+        if (currentHealth <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
     }
 
     private void DestroyEnemy()

@@ -37,6 +37,12 @@ namespace Taink
         {
             get { return rotationInput; }
         }
+
+        private float fireInput;
+        public float FireInput
+        {
+            get { return fireInput; }
+        }
         #endregion
 
 
@@ -72,6 +78,8 @@ namespace Taink
 
             forwardInput = Input.GetAxis("Vertical");
             rotationInput = Input.GetAxis("Horizontal");
+
+            fireInput = Input.GetAxis("Fire1");
         }
         #endregion
     }

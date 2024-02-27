@@ -16,7 +16,7 @@ public class Tank_Patrol_Bomb : MonoBehaviour
     [SerializeField] private float chargeSpeed;
     [SerializeField] private float patrolSpeed;
     [SerializeField] private float patrolAccelSpeed;
-    [SerializeField] private float explosionDamage = 50f;
+    [SerializeField] private int explosionDamage = 50;
     //[SerializeField] private GameObject explosionEffect;
 
     // Patroling
@@ -90,17 +90,24 @@ public class Tank_Patrol_Bomb : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Tank_Controller playerController = collision.gameObject.GetComponent<Tank_Controller>();
+
+            if (playerController != null)
+            {
+                playerController.TakeDamage(explosionDamage);
+            }
+            else
+            {
+                Debug.LogError("Tank_Controller component not found on collided player!");
+            }
+
             Explode();
-        }
+        }    
     }
 
     private void Explode()
     {
         //Instantiate(explosionEffect, transform.position, Quaternion.identity);
-
-        // TODO
-        //player.GetComponent<Tank_Controller>().TakeDamage(explosionDamage);
-
         DestroyEnemy();
     }
 
