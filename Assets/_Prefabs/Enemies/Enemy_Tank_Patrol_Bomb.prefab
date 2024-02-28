@@ -517,7 +517,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!195 &5575240075816045924
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -569,8 +569,6 @@ MonoBehaviour:
   patrolAccelSpeed: 4
   explosionDamage: 50
   waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   waypointIndex: 0
