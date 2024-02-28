@@ -18,6 +18,9 @@ public class Tank_Ranged : MonoBehaviour
     [SerializeField] private Vector3 walkPoint;
     [SerializeField] private bool walkPointSet;
     [SerializeField] private float walkPointRange;
+    [SerializeField] private float stuckThreshold = 3.0f;
+    [SerializeField] private float timeSinceLastMove = 0.0f;
+    [SerializeField] private Vector3 lastPosition;
 
     // Attacking
     [SerializeField] private float timeBetweenAttacks;
@@ -38,6 +41,8 @@ public class Tank_Ranged : MonoBehaviour
         currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+
+        lastPosition = transform.position;
     }
 
     private void Update()
@@ -48,6 +53,8 @@ public class Tank_Ranged : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
+
+        CheckIfStuck();
     }
 
     private void Patrolling()
@@ -62,6 +69,26 @@ public class Tank_Ranged : MonoBehaviour
         {
             walkPointSet = false;
         }
+    }
+
+    private void CheckIfStuck()
+    {
+        if (Vector3.Distance(transform.position, lastPosition) < 0.05f)
+        {
+            timeSinceLastMove += Time.deltaTime;
+
+            if (timeSinceLastMove >= stuckThreshold)
+            {
+                walkPointSet = false;
+                timeSinceLastMove = 0f;
+            }
+        }
+        else
+        {
+            timeSinceLastMove = 0f;
+        }
+
+        lastPosition = transform.position;
     }
 
     private void SearchWalkPoint()

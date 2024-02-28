@@ -72,7 +72,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 43940752586903048}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.5
+  m_Radius: 1.6
   m_Speed: 10
   m_Acceleration: 4
   avoidancePriority: 50
@@ -111,7 +111,10 @@ MonoBehaviour:
   maxHealth: 50
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
-  walkPointRange: 100
+  walkPointRange: 25
+  stuckThreshold: 3
+  timeSinceLastMove: 0
+  lastPosition: {x: 0, y: 0, z: 0}
   timeBetweenAttacks: 2
   alreadyAttacked: 0
   projectile: {fileID: 9094009511398482965, guid: ebc8ef3e1eaa76c44aacba4e5ec67bf4,
@@ -257,7 +260,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.9108307, y: 1.8390718, z: 2.378529}
+  m_Size: {x: 1.7591152, y: 1.8390718, z: 2.1184082}
   m_Center: {x: 0, y: 0.1553837, z: 0}
 --- !u!1 &4967064910036677528
 GameObject:

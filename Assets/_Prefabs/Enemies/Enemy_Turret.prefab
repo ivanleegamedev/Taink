@@ -88,7 +88,7 @@ MonoBehaviour:
   turretTransform: {fileID: 230685438261023665}
   rotationSpeed: 50
   turretDamage: 10
-  sightRange: 40
+  sightRange: 30
   playerInSightRange: 0
   timeBetweenAttacks: 1.5
   alreadyAttacked: 0
