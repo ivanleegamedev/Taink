@@ -86,7 +86,7 @@ MonoBehaviour:
     m_Bits: 2048
   maxHealth: 30
   turretTransform: {fileID: 230685438261023665}
-  rotationSpeed: 50
+  rotationSpeed: 75
   turretDamage: 10
   sightRange: 30
   playerInSightRange: 0
@@ -147,8 +147,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.437371, y: 1.6552504, z: 1.7258211}
-  m_Center: {x: 0, y: 0.81687886, z: 0.117945015}
+  m_Size: {x: 1.437371, y: 2.261229, z: 1.7258213}
+  m_Center: {x: 0, y: 1.119868, z: 0.11794504}
 --- !u!1 &1321324202081542512
 GameObject:
   m_ObjectHideFlags: 0
