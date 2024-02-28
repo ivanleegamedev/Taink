@@ -73,7 +73,7 @@ public class Tank_Ranged : MonoBehaviour
 
     private void CheckIfStuck()
     {
-        if (Vector3.Distance(transform.position, lastPosition) < 0.05f)
+        if (Vector3.Distance(transform.position, lastPosition) < 0.075f)
         {
             timeSinceLastMove += Time.deltaTime;
 
