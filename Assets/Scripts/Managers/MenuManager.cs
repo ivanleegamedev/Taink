@@ -31,8 +31,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Button wm_QuitButton;
 
 
+
     #region Unity Methods
-    private void Awake()
+    private void Start()
     {
         if (Instance == null)
         {
@@ -46,12 +47,8 @@ public class MenuManager : MonoBehaviour
 
         ActivateMainMenu();
         SubscribeToEvents();
-    }
-
-    private void Start()
-    {
-        GameManager.Instance.ChangeGameState(GameState.MAIN);
         InitializeButtons();
+        GameManager.Instance.ChangeGameState(GameState.MAIN);
     }
 
     private void OnDestroy()
@@ -61,9 +58,18 @@ public class MenuManager : MonoBehaviour
     #endregion
 
 
+
     private void SubscribeToEvents()
     {
-        GameManager.Instance.OnGameStateChanged += HandleGameStateChanged;
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnGameStateChanged += HandleGameStateChanged;
+        }
+        else
+        {
+            Debug.LogWarning("GameManager.Instance is null");
+        }
+        //GameManager.Instance.OnGameStateChanged += HandleGameStateChanged;
     }
 
     private void UnsubscribeFromEvents()

@@ -18,7 +18,7 @@ public class Turret_Basic : MonoBehaviour
 
     [SerializeField] private Transform turretTransform;
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private int turretDamage = 10;
+    //[SerializeField] private int turretDamage = 10;
 
     // States
     [SerializeField] private float sightRange;

@@ -11,6 +11,8 @@ public enum GameState
     WIN,
 }
 
+
+
 public class GameManager : MonoBehaviour
 {
     #region Variables
