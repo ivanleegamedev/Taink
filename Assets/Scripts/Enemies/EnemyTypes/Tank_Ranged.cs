@@ -35,7 +35,6 @@ public class Tank_Ranged : MonoBehaviour
     [SerializeField] private bool playerInSightRange;
     [SerializeField] private bool playerInAttackRange;
 
-
     private void Awake()
     {
         currentHealth = maxHealth;

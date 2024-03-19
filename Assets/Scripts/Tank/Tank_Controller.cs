@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,6 +48,14 @@ namespace Taink
             input = GetComponent<Tank_Inputs>();
 
             bCanShoot = true;
+        }
+
+        private void Update()
+        {
+            if (rb && input)
+            {
+                HandlePausing();
+            }
         }
 
         void FixedUpdate()
@@ -103,6 +112,14 @@ namespace Taink
             }
         }
 
+        private void HandlePausing()
+        {
+            if (input.PauseInput > 0.0f)
+            {
+                GameManager.Instance.ChangeGameState(GameState.PAUSE);
+            }
+        }
+
         private void ShootBullet()
         {
             if (!bulletPrefab || !bulletSpawnPoint) return;
@@ -134,6 +151,7 @@ namespace Taink
         protected virtual void Die()
         {
             Debug.Log("Tank is Dead!");
+            GameManager.Instance.ChangeGameState(GameState.GAMEOVER);
             Destroy(gameObject);
         }
         #endregion

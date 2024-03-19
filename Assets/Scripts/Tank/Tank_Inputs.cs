@@ -43,6 +43,12 @@ namespace Taink
         {
             get { return fireInput; }
         }
+
+        private float pauseInput;
+        public float PauseInput
+        {
+            get { return pauseInput; }
+        }
         #endregion
 
 
@@ -80,6 +86,9 @@ namespace Taink
             rotationInput = Input.GetAxis("Horizontal");
 
             fireInput = Input.GetAxis("Fire1");
+
+            // Pause Input will be when the player presses the "P" key
+            pauseInput = Input.GetKeyDown(KeyCode.P) ? 1 : 0;
         }
         #endregion
     }
