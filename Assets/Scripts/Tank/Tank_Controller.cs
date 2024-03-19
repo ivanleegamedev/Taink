@@ -28,6 +28,8 @@ namespace Taink
         [SerializeField] private Transform bulletSpawnPoint;
         [SerializeField] private float fireRate = 0.5f;
         [SerializeField] private float bulletSpeed = 1000.0f;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip shootClip;
         private bool bCanShoot = true;
 
         [Header("Reticle Properties")]
@@ -109,8 +111,9 @@ namespace Taink
             if (input.FireInput > 0.0f && bCanShoot)
             {
                 ShootBullet();
+                audioSource.PlayOneShot(shootClip);
                 bCanShoot = false;
-                Invoke(nameof(ResetShoot), fireRate);
+                Invoke(nameof(ResetShoot), fireRate);                
             }
         }
 
