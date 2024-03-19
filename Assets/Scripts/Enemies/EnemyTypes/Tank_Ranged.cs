@@ -11,6 +11,7 @@ public class Tank_Ranged : MonoBehaviour
     [SerializeField] private LayerMask whatIsWall;
     [SerializeField] private LayerMask whatIsPlayer;
 
+    [SerializeField] FloatingHealthBar healthBar;
     [SerializeField] private int maxHealth;
     private int currentHealth;
 
@@ -38,6 +39,8 @@ public class Tank_Ranged : MonoBehaviour
     private void Awake()
     {
         currentHealth = maxHealth;
+        healthBar = GetComponentInChildren<FloatingHealthBar>();
+
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
 
@@ -133,6 +136,7 @@ public class Tank_Ranged : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        healthBar.UpdateHealthBar(currentHealth, maxHealth);
 
         if (currentHealth <= 0) Invoke(nameof(DestroyEnemy), 0.0f);
     }

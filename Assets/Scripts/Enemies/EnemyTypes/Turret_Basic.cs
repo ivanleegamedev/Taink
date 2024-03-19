@@ -11,6 +11,7 @@ public class Turret_Basic : MonoBehaviour
     [SerializeField] private LayerMask whatIsWall;
     [SerializeField] private LayerMask whatIsPlayer;
 
+    [SerializeField] FloatingHealthBar healthBar;
     [SerializeField] private int maxHealth;
     private int currentHealth;
 
@@ -32,6 +33,8 @@ public class Turret_Basic : MonoBehaviour
     void Awake()
     {
         currentHealth = maxHealth;
+        healthBar = GetComponentInChildren<FloatingHealthBar>();
+
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -87,6 +90,7 @@ public class Turret_Basic : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        healthBar.UpdateHealthBar(currentHealth, maxHealth);
 
         if (currentHealth <= 0) Invoke(nameof(DestroyEnemy), 0.0f);
     }

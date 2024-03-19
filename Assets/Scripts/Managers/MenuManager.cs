@@ -44,6 +44,7 @@ public class MenuManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        ActivateMainMenu();
         SubscribeToEvents();
     }
 

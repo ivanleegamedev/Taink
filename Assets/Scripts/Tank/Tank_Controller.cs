@@ -15,6 +15,7 @@ namespace Taink
         [SerializeField] private float rotationSpeed = 60.0f;
 
         [Header("Health Properties")]
+        [SerializeField] private FloatingHealthBar healthBar;
         [SerializeField] private int maxHealth = 100;
         private int currentHealth;
 
@@ -43,6 +44,7 @@ namespace Taink
         void Start()
         {
             currentHealth = maxHealth;
+            healthBar = GetComponentInChildren<FloatingHealthBar>();
 
             rb = GetComponent<Rigidbody>();
             input = GetComponent<Tank_Inputs>();
@@ -140,6 +142,7 @@ namespace Taink
         public virtual void TakeDamage(int damage)
         {
             currentHealth -= damage;
+            healthBar.UpdateHealthBar(currentHealth, maxHealth);
             Debug.Log($"Tank took {damage} damage! Current Health: {currentHealth}");
 
             if (currentHealth <= 0)
