@@ -109,6 +109,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 2048
+  deathClip: {fileID: 8300000, guid: 6055834183c485a43bb1e0c1337a48ec, type: 3}
   healthBar: {fileID: 2694837559510983902}
   maxHealth: 50
   walkPoint: {x: 0, y: 0, z: 0}

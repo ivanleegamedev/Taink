@@ -15,6 +15,7 @@ namespace Taink
         [SerializeField] private float rotationSpeed = 60.0f;
 
         [Header("Health Properties")]
+        [SerializeField] AudioClip deathClip;
         [SerializeField] private FloatingHealthBar healthBar;
         [SerializeField] private int maxHealth = 100;
         private int currentHealth;
@@ -157,6 +158,7 @@ namespace Taink
         protected virtual void Die()
         {
             Debug.Log("Tank is Dead!");
+            AudioSource.PlayClipAtPoint(deathClip, Camera.main.transform.position);
             GameManager.Instance.ChangeGameState(GameState.GAMEOVER);
             Destroy(gameObject);
         }

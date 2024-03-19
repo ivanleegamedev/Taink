@@ -11,6 +11,7 @@ public class Turret_Basic : MonoBehaviour
     [SerializeField] private LayerMask whatIsWall;
     [SerializeField] private LayerMask whatIsPlayer;
 
+    [SerializeField] AudioClip deathClip;
     [SerializeField] FloatingHealthBar healthBar;
     [SerializeField] private int maxHealth;
     private int currentHealth;
@@ -97,6 +98,7 @@ public class Turret_Basic : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        AudioSource.PlayClipAtPoint(deathClip, Camera.main.transform.position);
         Destroy(gameObject);
     }
 

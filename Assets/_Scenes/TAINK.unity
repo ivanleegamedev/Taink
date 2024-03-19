@@ -53745,9 +53745,19 @@ PrefabInstance:
       objectReference: {fileID: 330585545}
     - target: {fileID: 2150054533032997567, guid: 581dd5ae08d4a38429828daba54f5772,
         type: 3}
+      propertyPath: deathClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6055834183c485a43bb1e0c1337a48ec, type: 3}
+    - target: {fileID: 2150054533032997567, guid: 581dd5ae08d4a38429828daba54f5772,
+        type: 3}
       propertyPath: shootClip
       value: 
       objectReference: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
+    - target: {fileID: 2150054533032997567, guid: 581dd5ae08d4a38429828daba54f5772,
+        type: 3}
+      propertyPath: deathAudio
+      value: 
+      objectReference: {fileID: 5325102042155362740}
     - target: {fileID: 2150054533032997567, guid: 581dd5ae08d4a38429828daba54f5772,
         type: 3}
       propertyPath: audioSource

@@ -85,6 +85,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 2048
+  deathClip: {fileID: 8300000, guid: 6055834183c485a43bb1e0c1337a48ec, type: 3}
   healthBar: {fileID: 5602320214517087652}
   maxHealth: 30
   turretTransform: {fileID: 230685438261023665}
